@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -51,15 +52,31 @@ class OrderController extends Controller
             // 'recipient_id' => 'required'
         ]);
 
+        if (Order::where('course_id', $data['course_id'])->where('recipient_id', Auth::user()->id)->count() > 0) {
+            return response()->json([
+                'error' => false,
+                'message_en' => '',
+                'message_ar' => 'تم التسجيل في هذه الدورة التدريبية من قبل '
+            ], 200);
+        } else {
 
-        $data['recipient_id'] = Auth::user()->id;
-        $order = Order::create($data);
-        return response()->json([
-            'order' => $order,
-            'error' => false,
-            'message_en' => '',
-            'message_ar' => 'تم  الاضافة بنجاح'
-        ], 200);
+            if (Course::where('id', $data['course_id'])->count() > 0) {
+                $data['recipient_id'] = Auth::user()->id;
+                $order = Order::create($data);
+                return response()->json([
+                    'order' => $order,
+                    'error' => false,
+                    'message_en' => '',
+                    'message_ar' => 'تم  الاضافة بنجاح'
+                ], 200);
+            } else {
+                return response()->json([
+                    'error' => false,
+                    'message_en' => '',
+                    'message_ar' => ' هذه الدورة التدريبية غير موجودة  '
+                ], 200);
+            }
+        }
     }
 
     /**
