@@ -104,6 +104,30 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $order = Order::find($id);
+        if (!$order) {
+            return response()->json([
+                'error' => false,
+                'message_en' => '',
+                'message_ar' => 'هذه الدورة التدريبية غير موجودة'
+            ], 200);
+        }
+        if ($order->recipient_id == Auth::user()->id) {
+            $order->delete();
+
+            return response()->json([
+                'order' => $order,
+                'error' => false,
+                'message_en' => '',
+                'message_ar' => 'تم  حذف الدورة التدريبية  بنجاح'
+            ], 200);
+        } else {
+            return response()->json([
+                // 'order' => $order,
+                'error' => false,
+                'message_en' => '',
+                'message_ar' => 'ليس لديك صلاحيات '
+            ], 200);
+        }
     }
 }
