@@ -18,7 +18,7 @@ class CreateCoursesTable extends Migration
             $table->string('name');
             $table->string('start_date');
             $table->string('finish_date');
-            $table->string('type');
+            // $table->string('type');
             $table->string('speaker_name');
             $table->string('content');
 

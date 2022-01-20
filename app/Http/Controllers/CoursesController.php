@@ -50,7 +50,7 @@ class CoursesController extends Controller
             'name'        => 'required',
             'start_date'        => 'required',
             'finish_date'        => 'required',
-            'type'        => 'required',
+            // 'type'        => 'required',
             'speaker_name'        => 'required',
             'content'        => 'required',
             'number'        => 'required',
@@ -66,7 +66,7 @@ class CoursesController extends Controller
         $course->name = $request->name;
         $course->start_date = $request->start_date;
         $course->finish_date = $request->finish_date;
-        $course->type = $request->type;
+        // $course->type = $request->type;
         $course->speaker_name = $request->speaker_name;
         $course->content = $request->content;
         $course->number = $request->number;
@@ -119,7 +119,7 @@ class CoursesController extends Controller
             'name'        => 'required',
             'start_date'        => 'required',
             'finish_date'        => 'required',
-            'type'        => 'required',
+            // 'type'        => 'required',
             'speaker_name'        => 'required',
             'content'        => 'required',
             'number'        => 'required',
@@ -135,7 +135,7 @@ class CoursesController extends Controller
         $course->name = $request->name;
         $course->start_date = $request->start_date;
         $course->finish_date = $request->finish_date;
-        $course->type = $request->type;
+        // $course->type = $request->type;
         $course->speaker_name = $request->speaker_name;
         $course->content = $request->content;
         $course->number = $request->number;

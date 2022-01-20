@@ -32,9 +32,9 @@
                                             تاريخ النهاية
                                         </th>
 
-                                        <th>
+                                        {{-- <th>
                                             النوع
-                                        </th>
+                                        </th> --}}
 
                                         <th>
                                             المتحدث
@@ -61,9 +61,9 @@
                                                     {{$course->finish_date}}
                                                 </td>
 
-                                                <td style=" vertical-align: middle;">
+                                                {{-- <td style=" vertical-align: middle;">
                                                     {{$course->type}}
-                                                </td>
+                                                </td> --}}
 
                                                 <td>
                                                     {{$course->speaker_name}}

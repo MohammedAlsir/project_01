@@ -65,8 +65,8 @@ class ApiController extends Controller
                 'phone' => ['min:10', 'max:10', Rule::unique('recipients')->ignore($recipient)],
                 'password' => '',
                 'name'    => '',
-                'location' => '',
-                'photo' => ''
+                // 'location' => '',
+                // 'photo' => ''
 
             ]);
             if ($request->password) {

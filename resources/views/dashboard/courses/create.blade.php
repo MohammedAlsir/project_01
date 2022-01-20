@@ -40,12 +40,12 @@
 												</div>
 
 
-                                                <div class="form-group">
+                                                {{-- <div class="form-group">
 													<label class="col-md-3 control-label">النوع</label>
 													<div class="col-md-4">
 														<input required type="text" name="type" class="form-control input-circle" placeholder=" النوع">
 													</div>
-												</div>
+												</div> --}}
 
                                                 <div class="form-group">
 													<label class="col-md-3 control-label">اسم المتحدث</label>
