@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Recipient;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -42,14 +43,19 @@ class ApiController extends Controller
 
     public function courses()
     {
+        // Carbon::createFromFormat('d/m/Y', )->format('Y-m-d')
+
         $courses = Course::where('section_id', Auth::user()->section_id)
             ->where('functional_classe_id', Auth::user()->functional_classe_id)
+            ->where('finish_date', '>=', Carbon::now()->isoFormat('YYYY-MM-DD'))
             ->orderBy('id', 'DESC')->get();
         return response()->json([
             'courses' => $courses,
             'error' => false,
             'message_en' => '',
-            'message_ar' => ''
+            'message_ar' => '',
+            '' => Carbon::now()->isoFormat('YYYY-MM-DD')
+
         ], 200);
     }
 
