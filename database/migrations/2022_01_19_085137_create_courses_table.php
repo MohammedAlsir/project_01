@@ -24,6 +24,8 @@ class CreateCoursesTable extends Migration
 
             $table->string('number');
 
+            $table->string('remaining');
+
             $table->foreignId('section_id')->constrained();
             $table->foreignId('functional_classe_id')->constrained();
 

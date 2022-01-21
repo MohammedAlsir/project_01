@@ -66,7 +66,9 @@ class CoursesController extends Controller
         $course->name = $request->name;
         $course->start_date = $request->start_date;
         $course->finish_date = $request->finish_date;
-        // $course->type = $request->type;
+
+        $course->remaining = $request->number;
+
         $course->speaker_name = $request->speaker_name;
         $course->content = $request->content;
         $course->number = $request->number;

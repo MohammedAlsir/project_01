@@ -54,7 +54,7 @@ class OrderController extends Controller
 
         if (Order::where('course_id', $data['course_id'])->where('recipient_id', Auth::user()->id)->count() > 0) {
             return response()->json([
-                'error' => false,
+                'error' => true,
                 'message_en' => '',
                 'message_ar' => 'تم التسجيل في هذه الدورة التدريبية من قبل '
             ], 200);
@@ -62,6 +62,16 @@ class OrderController extends Controller
 
             if (Course::where('id', $data['course_id'])->count() > 0) {
                 $data['recipient_id'] = Auth::user()->id;
+
+                $cources = Course::where('id', $data['course_id'])->first();
+
+                $cources->remaining = (int)$cources->remaining - 1;
+
+                $cources->save();
+
+
+
+
                 $order = Order::create($data);
                 return response()->json([
                     'order' => $order,
@@ -131,6 +141,14 @@ class OrderController extends Controller
         }
         if ($order->recipient_id == Auth::user()->id) {
             $order->delete();
+
+            //
+            $cources = Course::where('id', $order->course_id)->first();
+
+            $cources->remaining = (int)$cources->remaining + 1;
+
+            $cources->save();
+            //
 
             return response()->json([
                 'order' => $order,

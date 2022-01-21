@@ -21,7 +21,7 @@
 												<div class="form-group">
 													<label class="col-md-3 control-label">اسم الدرجة وظيفية</label>
 													<div class="col-md-4">
-														<input required type="text" maxlength="255" name="name" class="form-control input-circle" placeholder="اسم القسم">
+														<input required type="text" maxlength="255" name="name" class="form-control input-circle" placeholder="اسم الدرجة الوظيفية">
 													</div>
 												</div>
 
